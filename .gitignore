@@ -1,0 +1,39 @@
+# Virtual environments
+.venv/
+.venv*/
+venv/
+env/
+ENV/
+*.venv/
+
+# MkDocs build directory
+site/
+site*/
+
+# Python cache & artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# IDEs
+.vscode/
+.idea/
+
+# Environment files
+.env
+.env.*
