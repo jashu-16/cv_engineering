@@ -1,0 +1,125 @@
+site_name: CV & Perception Engineering Notes
+site_description: Comprehensive Notion-style documentation and engineering notes for Machine Learning, Deep Learning, PyTorch, OpenCV, and YOLO.
+site_author: Jashwanth
+repo_url: https://github.com/jashu-16/cv_engineering
+repo_name: jashu-16/cv_engineering
+
+theme:
+  name: material
+  language: en
+  palette:
+    # Light Mode (Notion Light)
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    # Dark Mode (Notion Dark)
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: slate
+      accent: cyan
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.indexes
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - tables
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+nav:
+  - "Home": index.md
+  - "1. ML Foundations":
+      - "Overview": 01-machine-learning-foundations/index.md
+      - "Level 1: ML Fundamentals": 01-machine-learning-foundations/level-01-ml-fundamentals.md
+      - "Level 2: Data Handling": 01-machine-learning-foundations/level-02-data-handling.md
+      - "Level 3: Data Preprocessing": 01-machine-learning-foundations/level-03-data-preprocessing.md
+      - "Level 4: Exploratory Data Analysis": 01-machine-learning-foundations/level-04-eda.md
+      - "Level 5: Regression & Regularization": 01-machine-learning-foundations/level-05-regression.md
+      - "Level 6: Classification": 01-machine-learning-foundations/level-06-classification.md
+      - "Level 7: Model Evaluation": 01-machine-learning-foundations/level-07-model-evaluation.md
+      - "Level 8: Unsupervised Learning": 01-machine-learning-foundations/level-08-unsupervised-learning.md
+      - "Level 9: Feature Engineering": 01-machine-learning-foundations/level-09-feature-engineering.md
+      - "Level 10: Optimization & Tuning": 01-machine-learning-foundations/level-10-optimization-tuning.md
+      - "Level 11: Generalization & Analysis": 01-machine-learning-foundations/level-11-generalization-analysis.md
+      - "Level 12: Practical ML & Pipelines": 01-machine-learning-foundations/level-12-practical-ml.md
+  - "2. Deep Learning":
+      - "Overview": 02-deep-learning/index.md
+      - "Level 1: DL Fundamentals": 02-deep-learning/level-01-dl-fundamentals.md
+      - "Level 2: Neural Network Training": 02-deep-learning/level-02-neural-network-training.md
+      - "Level 3: Building Neural Networks": 02-deep-learning/level-03-building-neural-networks.md
+      - "Level 4: Generalization & Regularization": 02-deep-learning/level-04-generalization-regularization.md
+      - "Level 5: PyTorch Core": 02-deep-learning/level-05-pytorch.md
+      - "Level 6: Convolutional Neural Networks": 02-deep-learning/level-06-cnns.md
+      - "Level 7: Transfer Learning & Fine-Tuning": 02-deep-learning/level-07-transfer-learning.md
+      - "Level 8: Data & Training Techniques": 02-deep-learning/level-08-data-training-techniques.md
+      - "Level 9: Image Classification": 02-deep-learning/level-09-image-classification.md
+      - "Level 10: Advanced Architectures & Transformers": 02-deep-learning/level-10-advanced-architectures.md
+      - "Level 11: Generative Deep Learning": 02-deep-learning/level-11-generative-dl.md
+      - "Level 12: Deep Learning Engineering": 02-deep-learning/level-12-dl-engineering.md
+      - "Level 13: Experimentation & Production": 02-deep-learning/level-13-experimentation-production.md
+  - "3. PyTorch":
+      - "Overview": 03-pytorch/index.md
+  - "4. OpenCV":
+      - "Overview": 04-opencv/index.md
+  - "5. YOLO & Perception":
+      - "Overview": 05-yolo-perception/index.md
