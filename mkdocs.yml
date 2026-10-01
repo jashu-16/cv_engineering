@@ -1,6 +1,7 @@
 site_name: CV & Perception Engineering Notes
 site_description: Comprehensive Notion-style documentation and engineering notes for Machine Learning, Deep Learning, PyTorch, OpenCV, and YOLO.
 site_author: Jashwanth
+site_url: https://jashu-16.github.io/cv_engineering/
 repo_url: https://github.com/jashu-16/cv_engineering
 repo_name: jashu-16/cv_engineering
 
