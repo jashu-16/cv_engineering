@@ -8,7 +8,7 @@ hide:
 <div class="pixel-banner">
   <div class="pixel-hud-row">
     <div class="pixel-tag"><span class="pixel-indicator"></span>PERCEPTION_ENGINE // PRODUCTION_KNOWLEDGE_BASE</div>
-    <div class="pixel-meta-right">5 CURRICULA // 68 LEVELS // 241 TOPICS</div>
+    <div class="pixel-meta-right">6 CURRICULA // 72 LEVELS // 269 TOPICS</div>
   </div>
   <div class="pixel-main-content">
     <div class="pixel-avatar">🛰️</div>
@@ -36,18 +36,18 @@ hide:
 <div class="notion-callout">
   <div class="notion-callout-icon">💡</div>
   <div class="notion-callout-content">
-    <strong>Welcome to the Master Knowledge Base!</strong> This repository houses rigorous, production-grade engineering documentation covering the entire continuum of modern Computer Vision: from statistical machine learning fundamentals to real-time YOLO object detection and edge deployment.
+    <strong>Welcome to the Master Knowledge Base!</strong> This repository houses rigorous, production-grade engineering documentation covering the entire continuum of modern Computer Vision: from foundational mathematics and statistical machine learning to real-time YOLO object detection and edge deployment.
   </div>
 </div>
 
 <!-- Quick Metrics Ribbon -->
 <div class="pixel-stats-strip">
   <div class="pixel-stat-card">
-    <div class="pixel-stat-num">5</div>
+    <div class="pixel-stat-num">6</div>
     <div class="pixel-stat-label">Core Curricula</div>
   </div>
   <div class="pixel-stat-card">
-    <div class="pixel-stat-num">68</div>
+    <div class="pixel-stat-num">72</div>
     <div class="pixel-stat-label">Engineering Levels</div>
   </div>
   <div class="pixel-stat-card">
@@ -67,6 +67,11 @@ hide:
 Follow the unified path from first-principles linear algebra to hardware-accelerated autonomous vision:
 
 <div class="pixel-pipeline-strip">
+  <div class="pixel-step-box">
+    <span class="pixel-step-index">STAGE 00</span>
+    <span class="pixel-step-title">Math Foundations</span>
+    <span class="pixel-step-desc">Linear algebra, multivariable calculus, probability, and 3D camera geometry.</span>
+  </div>
   <div class="pixel-step-box">
     <span class="pixel-step-index">STAGE 01</span>
     <span class="pixel-step-title">ML Foundations</span>
@@ -98,9 +103,47 @@ Follow the unified path from first-principles linear algebra to hardware-acceler
 
 ## 🗂️ Core Technology Tracks
 
-Explore the five fundamental pillars derived from our curriculum roadmaps:
+Explore the fundamental pillars of modern AI and perception engineering:
 
 <div class="pixel-card-grid">
+
+  <!-- Card 0: Math Foundations -->
+  <a href="00-math-foundations/" class="pixel-card pixel-card-math">
+    <div>
+      <div class="pixel-card-hud">
+        <div class="pixel-card-tag">
+          <span class="pixel-dot"></span>
+          <span class="pixel-card-hud-tag">TRACK 00 // MATH_CORE</span>
+        </div>
+        <span class="pixel-card-badge">LVL 04 • 28 TOPICS</span>
+      </div>
+
+      <div class="pixel-card-title-row">
+        <div class="pixel-card-icon">📐</div>
+        <div>
+          <h3 class="pixel-card-title">0. MATH FOUNDATIONS</h3>
+          <span class="pixel-card-sub">LINEAR ALGEBRA • CALCULUS • STATS • 3D GEOMETRY</span>
+        </div>
+      </div>
+
+      <p class="pixel-card-desc">
+        Essential mathematics for AI, DL, and Vision: vector norms, matrix multiplication, backpropagation calculus, Bayes' rule, and camera matrices.
+      </p>
+
+      <div class="pixel-tech-stack">
+        <span class="pixel-chip">TENSORS</span>
+        <span class="pixel-chip">GRADIENTS</span>
+        <span class="pixel-chip">EIGENVALUES</span>
+        <span class="pixel-chip">PROBABILITY</span>
+        <span class="pixel-chip">HOMOGRAPHY</span>
+      </div>
+    </div>
+
+    <div class="pixel-card-footer">
+      <span class="pixel-card-status">[ PREREQUISITE_CORE ]</span>
+      <span class="pixel-btn-action">EXPLORE TRACK ▸</span>
+    </div>
+  </a>
 
   <!-- Card 1: Machine Learning Foundations -->
   <a href="01-machine-learning-foundations/" class="pixel-card pixel-card-ml">

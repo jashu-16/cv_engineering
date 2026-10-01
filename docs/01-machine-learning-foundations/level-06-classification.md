@@ -89,8 +89,8 @@ $$J(W, b) = -\frac{1}{m} \sum_{i=1}^m \left[ y^{(i)} \log(\hat{y}^{(i)}) + (1 - 
 To classify more than two classes (e.g. Cat, Dog, Horse):
 1. **One-vs-Rest (OvR):** Trains $K$ separate binary classifiers (e.g., Cat vs Not-Cat, Dog vs Not-Dog) and picks the class with the highest probability.
 2. **Softmax Regression (Multinomial):** Generalizes the sigmoid to normalize outputs across all $K$ classes so their probabilities sum to exactly $1.0$:
-   
-   $$P(y = k \mid x) = \frac{e^{z_k}}{\sum_{j=1}^K e^{z_j}}$$
+
+    $$P(y = k \mid x) = \frac{e^{z_k}}{\sum_{j=1}^K e^{z_j}}$$
 
 ---
 
@@ -137,19 +137,20 @@ flowchart TD
 At each node, the tree evaluates every feature and every possible threshold value, choosing the split that maximizes purity:
 
 * **Entropy ($H(S)$):** Measures information disorder:
-  
-  $$H(S) = -\sum_{i=1}^C p_i \log_2(p_i)$$
-  
-  Pure node (all one class): $H = 0$. Maximum disorder (50/50 split): $H = 1.0$.
+
+    $$H(S) = -\sum_{i=1}^C p_i \log_2(p_i)$$
+
+    Pure node (all one class): $H = 0$. Maximum disorder (50/50 split): $H = 1.0$.
+
 * **Information Gain:** The reduction in entropy achieved after splitting on feature $A$:
-  
-  $$\text{Gain}(S, A) = H(S) - \sum \frac{|S_v|}{|S|} H(S_v)$$
-  
+
+    $$\text{Gain}(S, A) = H(S) - \sum \frac{|S_v|}{|S|} H(S_v)$$
+
 * **Gini Impurity ($G$):** Default in Scikit-Learn:
-  
-  $$G = 1 - \sum_{i=1}^C p_i^2$$
-  
-  Computationally faster than entropy because it avoids calculating logarithms while yielding nearly identical tree structures.
+
+    $$G = 1 - \sum_{i=1}^C p_i^2$$
+
+    Computationally faster than entropy because it avoids calculating logarithms while yielding nearly identical tree structures.
 
 * **Preventing Overfitting (Pruning):** Without constraints, a decision tree will continue splitting until every leaf contains a single sample (100% training accuracy, zero test generalization). Regularize by limiting `max_depth`, setting `min_samples_split`, or `min_samples_leaf`.
 

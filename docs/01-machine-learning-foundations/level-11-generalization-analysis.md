@@ -109,8 +109,8 @@ Simple oversampling duplicates existing minority records, causing decision trees
 1. For each minority sample $x$, find its $k$ nearest minority neighbors in feature space.
 2. Select one random neighbor $x_{\text{zi}}$.
 3. Generate a new synthetic sample along the line segment between them:
-   
-   $$x_{\text{new}} = x + \lambda \cdot (x_{\text{zi}} - x), \quad \text{where } \lambda \in [0, 1]$$
+
+    $$x_{\text{new}} = x + \lambda \cdot (x_{\text{zi}} - x), \quad \text{where } \lambda \in [0, 1]$$
 
 ```python
 from imblearn.over_sampling import SMOTE

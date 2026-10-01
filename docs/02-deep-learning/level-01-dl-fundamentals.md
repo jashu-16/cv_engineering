@@ -200,8 +200,10 @@ graph LR
 
 ### Parameters vs Activations
 * **Parameters (Weights $\mathbf{W}$ & Biases $\mathbf{b}$):** Learnable state matrices optimized by gradient descent.
-  $$\text{Total Parameters} = \sum_{l=1}^L \left( d_{l-1} \times d_l + d_l \right)$$
-  *(where $d_{l-1} \times d_l$ counts the weights and $+ d_l$ counts the biases).*
+
+    $$\text{Total Parameters} = \sum_{l=1}^L \left( d_{l-1} \times d_l + d_l \right)$$
+
+    *(where $d_{l-1} \times d_l$ counts the weights and $+ d_l$ counts the biases).*
 * **Activations ($\mathbf{a}^{(l)}$):** Dynamic intermediate vectors generated during forward propagation for a given input batch. They are transient and vary per sample.
 
 ---
@@ -288,7 +290,8 @@ $$\text{Softmax}(\mathbf{z})_i = \frac{e^{z_i}}{\sum_{j=1}^K e^{z_j}} \quad \tex
 
 * **Properties:** All outputs are strictly positive ($\in (0, 1)$) and sum exactly to $1.0$ ($\sum_i p_i = 1$).
 * **Numerical Stability Trick:** Directly computing $e^{z_i}$ causes floating-point overflow if $z_i > 709$ in IEEE-754 float64 (or $> 88$ in float32). To prevent overflow, subtract the maximum logit before exponentiation:
-  $$\text{Softmax}(\mathbf{z})_i = \frac{e^{z_i - \max(\mathbf{z})}}{\sum_{j=1}^K e^{z_j - \max(\mathbf{z})}}$$
+
+    $$\text{Softmax}(\mathbf{z})_i = \frac{e^{z_i - \max(\mathbf{z})}}{\sum_{j=1}^K e^{z_j - \max(\mathbf{z})}}$$
 
 ---
 

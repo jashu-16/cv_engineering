@@ -67,10 +67,10 @@ flowchart TD
   * An *Objective Function* is any function to be maximized or minimized.
   * A *Cost Function* $J(\theta)$ specifically measures the average penalty across all training samples (e.g. Mean Squared Error or Binary Cross-Entropy).
 * **The Gradient ($\nabla J(\theta)$):** A vector of partial derivatives pointing in the direction of steepest ascent:
-  
-  $$\nabla J(\theta) = \left[ \frac{\partial J}{\partial w_1}, \frac{\partial J}{\partial w_2}, \dots, \frac{\partial J}{\partial b} \right]^T$$
-  
-  Subtracting the gradient moves parameters toward the steepest descent.
+
+    $$\nabla J(\theta) = \left[ \frac{\partial J}{\partial w_1}, \frac{\partial J}{\partial w_2}, \dots, \frac{\partial J}{\partial b} \right]^T$$
+
+    Subtracting the gradient moves parameters toward the steepest descent.
 * **Learning Rate ($\alpha$):** Determines the step size:
   * *Too small:* Takes thousands of epochs, wastes compute, and risks getting trapped in flat plateaus.
   * *Too large:* Overshoots the global minimum and oscillates wildly or diverges to infinity ($\text{NaN}$).

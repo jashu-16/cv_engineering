@@ -79,7 +79,8 @@ $$\text{Params} = (D_{in} \times D_{out}) + D_{out} \quad \text{[Weights + Biase
 * **Epoch:** Exactly one complete pass through the entire training dataset ($N$ total samples).
 * **Batch Size ($B$):** The number of training samples processed simultaneously in a single forward/backward pass.
 * **Iteration (Step):** A single parameter update step.
-  $$\text{Iterations per Epoch} = \left\lceil \frac{N}{B} \right\rceil$$
+
+    $$\text{Iterations per Epoch} = \left\lceil \frac{N}{B} \right\rceil$$
 
 ### Canonical PyTorch Training & Validation Loop
 
@@ -199,7 +200,9 @@ graph TD
 
 #### Batch Normalization: Training vs Evaluation Dynamics
 * **During Training:** Uses the mini-batch mean $\mu_B$ and variance $\sigma^2_B$. Simultaneously updates running exponential moving averages:
-  $$\mu_{\text{running}} = (1 - m)\mu_{\text{running}} + m \mu_B \quad (m = 0.1)$$
+
+    $$\mu_{\text{running}} = (1 - m)\mu_{\text{running}} + m \mu_B \quad (m = 0.1)$$
+
 * **During Evaluation (`model.eval()`):** Mini-batch statistics are frozen. Normalization applies the cached $\mu_{\text{running}}$ and $\sigma^2_{\text{running}}$, guaranteeing deterministic predictions independent of batch composition.
 
 ---

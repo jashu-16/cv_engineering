@@ -150,22 +150,29 @@ Won the ImageNet Large Scale Visual Recognition Challenge (ILSVRC) by a massive 
 
 ### 3. VGG (Simonyan & Zisserman, 2014)
 * **The $3 \times 3$ Factorization Principle:** Proved that stacking two $3 \times 3$ convolutions has an effective receptive field of a single $5 \times 5$ convolution, but requires significantly fewer parameters:
-  $$\text{Two } 3 \times 3 \text{ layers:} \quad 2 \times (3^2 \cdot C^2) = \mathbf{18 C^2}$$
-  $$\text{One } 5 \times 5 \text{ layer:} \quad 1 \times (5^2 \cdot C^2) = \mathbf{25 C^2}$$
-  This yields a **28% parameter reduction** while introducing an extra non-linear activation layer.
+
+    $$\text{Two } 3 \times 3 \text{ layers:} \quad 2 \times (3^2 \cdot C^2) = \mathbf{18 C^2}$$
+
+    $$\text{One } 5 \times 5 \text{ layer:} \quad 1 \times (5^2 \cdot C^2) = \mathbf{25 C^2}$$
+
+    This yields a **28% parameter reduction** while introducing an extra non-linear activation layer.
 
 ### 4. ResNet (He et al., 2015)
 * **The Degradation Problem:** Prior to ResNet, training deeper networks ($>20$ layers) caused training error to increase—not from overfitting, but because vanishing/exploding gradients made optimization intractable.
 * **Residual Learning & Identity Shortcuts:**
-  $$\mathbf{y} = \mathcal{F}(\mathbf{x}, \{W_i\}) + \mathbf{x}$$
-  Instead of forcing stacked layers to fit an underlying mapping $\mathcal{H}(\mathbf{x})$, ResNet forces them to fit a **residual mapping** $\mathcal{F}(\mathbf{x}) = \mathcal{H}(\mathbf{x}) - \mathbf{x}$. If a layer is redundant, gradient descent can easily drive its weights toward zero ($\mathcal{F}(\mathbf{x}) \rightarrow 0$), leaving the identity mapping $\mathbf{y} = \mathbf{x}$. This enabled training networks with **152+ layers**.
+
+    $$\mathbf{y} = \mathcal{F}(\mathbf{x}, \{W_i\}) + \mathbf{x}$$
+
+    Instead of forcing stacked layers to fit an underlying mapping $\mathcal{H}(\mathbf{x})$, ResNet forces them to fit a **residual mapping** $\mathcal{F}(\mathbf{x}) = \mathcal{H}(\mathbf{x}) - \mathbf{x}$. If a layer is redundant, gradient descent can easily drive its weights toward zero ($\mathcal{F}(\mathbf{x}) \rightarrow 0$), leaving the identity mapping $\mathbf{y} = \mathbf{x}$. This enabled training networks with **152+ layers**.
 
 ### 5. MobileNet (Howard et al., 2017)
 * **Depthwise Separable Convolutions:** Splits standard convolution into:
   1. *Depthwise Conv:* One $3 \times 3$ spatial kernel per input channel ($C_{in}$ operations).
   2. *Pointwise Conv:* A $1 \times 1$ convolution combining channel activations across depth.
-  $$\text{Computational Cost Ratio} = \frac{K \cdot K \cdot C_{in} \cdot H \cdot W + C_{in} \cdot C_{out} \cdot H \cdot W}{K \cdot K \cdot C_{in} \cdot C_{out} \cdot H \cdot W} = \frac{1}{C_{out}} + \frac{1}{K^2} \approx \frac{1}{9}$$
-  Achieves an **$8\times$ to $9\times$ reduction in computational operations (FLOPs)** with minimal accuracy loss, making modern computer vision feasible on smartphones and edge devices.
+
+    $$\text{Computational Cost Ratio} = \frac{K \cdot K \cdot C_{in} \cdot H \cdot W + C_{in} \cdot C_{out} \cdot H \cdot W}{K \cdot K \cdot C_{in} \cdot C_{out} \cdot H \cdot W} = \frac{1}{C_{out}} + \frac{1}{K^2} \approx \frac{1}{9}$$
+
+    Achieves an **$8\times$ to $9\times$ reduction in computational operations (FLOPs)** with minimal accuracy loss, making modern computer vision feasible on smartphones and edge devices.
 
 ---
 
