@@ -53,9 +53,12 @@ In deep learning frameworks, training samples are batched together into 2D tenso
 
 For a fully connected layer $l$ receiving input activations $\mathbf{A}^{(l-1)} \in \mathbb{R}^{B \times D_{l-1}}$:
 1. **Affine Transformation:** The input matrix is multiplied by the weight parameter tensor $\mathbf{W}^{(l)} \in \mathbb{R}^{D_{l-1} \times D_l}$ and shifted by the broadcasted bias vector $\mathbf{b}^{(l)} \in \mathbb{R}^{D_l}$:
-   $$\mathbf{Z}^{(l)} = \mathbf{A}^{(l-1)} \mathbf{W}^{(l)} + \mathbf{b}^{(l)}$$
+
+    $$\mathbf{Z}^{(l)} = \mathbf{A}^{(l-1)} \mathbf{W}^{(l)} + \mathbf{b}^{(l)}$$
+
 2. **Non-Linear Activation:** An element-wise non-linear activation function $g^{(l)}(\cdot)$ is evaluated:
-   $$\mathbf{A}^{(l)} = g^{(l)}\left(\mathbf{Z}^{(l)}\right)$$
+
+    $$\mathbf{A}^{(l)} = g^{(l)}\left(\mathbf{Z}^{(l)}\right)$$
 
 ```mermaid
 graph LR
@@ -120,7 +123,8 @@ $$\mathcal{L}_{\text{BCE}}(\hat{y}, y) = -\frac{1}{B} \sum_{i=1}^B \Big( y_i \lo
 * **Target Domain:** Binary labels $y \in \{0, 1\}$ paired with predicted sigmoid probabilities $\hat{y} = \sigma(z) \in (0, 1)$.
 * **Probabilistic Basis:** Derived directly from the Maximum Likelihood Estimation (MLE) of a Bernoulli distribution.
 * **Numerical Warning:** If $\hat{y}_i \rightarrow 0$ when $y_i = 1$, $\log(0) \rightarrow -\infty$ producing `NaN`. PyTorch solves this via `nn.BCEWithLogitsLoss()`, which fuses the sigmoid and log-loss into a single numerically stable formulation using the log-sum-exp trick:
-  $$\mathcal{L}(z, y) = \max(z, 0) - z \cdot y + \log(1 + e^{-|z|})$$
+
+    $$\mathcal{L}(z, y) = \max(z, 0) - z \cdot y + \log(1 + e^{-|z|})$$
 
 ### 4. Categorical Cross-Entropy (CCE)
 Given multi-class targets encoded as one-hot vectors $\mathbf{y} \in \{0, 1\}^K$ and softmax outputs $\hat{\mathbf{y}} \in (0, 1)^K$:
@@ -154,22 +158,34 @@ graph RL
 
 ### Mathematical Derivation of Backpropagation
 Consider a 2-layer network with loss $\mathcal{L}$:
+
 $$\mathbf{Z}^{(1)} = \mathbf{X} \mathbf{W}^{(1)} + \mathbf{b}^{(1)}, \quad \mathbf{A}^{(1)} = g(\mathbf{Z}^{(1)})$$
+
 $$\mathbf{Z}^{(2)} = \mathbf{A}^{(1)} \mathbf{W}^{(2)} + \mathbf{b}^{(2)}, \quad \hat{\mathbf{Y}} = \text{Softmax}(\mathbf{Z}^{(2)})$$
 
 1. **Output Layer Error Vector ($\boldsymbol{\delta}^{(2)}$):**
    Using cross-entropy loss with softmax activation, the partial derivative simplifies with elegance:
-   $$\boldsymbol{\delta}^{(2)} = \frac{\partial \mathcal{L}}{\partial \mathbf{Z}^{(2)}} = \hat{\mathbf{Y}} - \mathbf{Y}$$
+
+    $$\boldsymbol{\delta}^{(2)} = \frac{\partial \mathcal{L}}{\partial \mathbf{Z}^{(2)}} = \hat{\mathbf{Y}} - \mathbf{Y}$$
+
 2. **Output Parameter Gradients:**
-   $$\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(2)}} = (\mathbf{A}^{(1)})^T \boldsymbol{\delta}^{(2)}$$
-   $$\frac{\partial \mathcal{L}}{\partial \mathbf{b}^{(2)}} = \sum_{i=1}^B \boldsymbol{\delta}^{(2)}_{i,:}$$
+
+    $$\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(2)}} = (\mathbf{A}^{(1)})^T \boldsymbol{\delta}^{(2)}$$
+
+    $$\frac{\partial \mathcal{L}}{\partial \mathbf{b}^{(2)}} = \sum_{i=1}^B \boldsymbol{\delta}^{(2)}_{i,:}$$
+
 3. **Hidden Layer Error Vector ($\boldsymbol{\delta}^{(1)}$):**
    Backpropagating the error gradient across the weight matrix $\mathbf{W}^{(2)}$ and through the activation derivative $g'(\cdot)$:
-   $$\boldsymbol{\delta}^{(1)} = \frac{\partial \mathcal{L}}{\partial \mathbf{Z}^{(1)}} = \left( \boldsymbol{\delta}^{(2)} (\mathbf{W}^{(2)})^T \right) \odot g'(\mathbf{Z}^{(1)})$$
+
+    $$\boldsymbol{\delta}^{(1)} = \frac{\partial \mathcal{L}}{\partial \mathbf{Z}^{(1)}} = \left( \boldsymbol{\delta}^{(2)} (\mathbf{W}^{(2)})^T \right) \odot g'(\mathbf{Z}^{(1)})$$
+
    *(where $\odot$ represents the element-wise Hadamard product).*
+
 4. **Hidden Parameter Gradients:**
-   $$\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(1)}} = \mathbf{X}^T \boldsymbol{\delta}^{(1)}$$
-   $$\frac{\partial \mathcal{L}}{\partial \mathbf{b}^{(1)}} = \sum_{i=1}^B \boldsymbol{\delta}^{(1)}_{i,:}$$
+
+    $$\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{(1)}} = \mathbf{X}^T \boldsymbol{\delta}^{(1)}$$
+
+    $$\frac{\partial \mathcal{L}}{\partial \mathbf{b}^{(1)}} = \sum_{i=1}^B \boldsymbol{\delta}^{(1)}_{i,:}$$
 
 ---
 
@@ -192,7 +208,9 @@ A static learning rate $\eta$ is sub-optimal: large $\eta$ enables fast early pr
 
 1. **Step Decay:** Reduces $\eta$ by a factor $\gamma$ (e.g., $0.1$) at fixed epoch milestones.
 2. **Cosine Annealing:** Smoothly decays $\eta$ following a half-cosine curve:
-   $$\eta_t = \eta_{min} + \frac{1}{2}(\eta_{max} - \eta_{min})\left(1 + \cos\left(\frac{t}{T_{max}}\pi\right)\right)$$
+
+    $$\eta_t = \eta_{min} + \frac{1}{2}(\eta_{max} - \eta_{min})\left(1 + \cos\left(\frac{t}{T_{max}}\pi\right)\right)$$
+
 3. **Warmup Schedules:** Linearly increases $\eta$ from 0 to $\eta_{max}$ during the first few epochs to stabilize random initialization gradients before initiating decay.
 
 ---

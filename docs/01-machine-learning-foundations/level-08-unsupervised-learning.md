@@ -61,13 +61,13 @@ flowchart TD
 
 ---
 
-### Inertia & Choosing Optimal $K$
+### Inertia & Choosing Optimal K
 
 * **Inertia (Within-Cluster Sum of Squares - WCSS):** Measures the internal cohesion of clusters:
-  
-  $$\text{Inertia} = \sum_{k=1}^K \sum_{x \in C_k} ||x - \mu_k||^2$$
-  
-  As $K$ increases, inertia automatically decreases toward $0$ (if $K = m$, every point is its own centroid and inertia is zero).
+
+    $$\text{Inertia} = \sum_{k=1}^K \sum_{x \in C_k} ||x - \mu_k||^2$$
+
+    As $K$ increases, inertia automatically decreases toward $0$ (if $K = m$, every point is its own centroid and inertia is zero).
 * **The Elbow Method:** Plots Inertia vs $K$. The point where the rate of decrease abruptly bends (the "elbow") indicates the optimal tradeoff between compactness and cluster count.
 * **Silhouette Score:** Evaluates how similar an object is to its own cluster compared to other clusters (ranges from $-1.0$ to $+1.0$). A score near $+1.0$ indicates well-separated, dense clusters.
 

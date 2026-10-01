@@ -82,9 +82,12 @@ Failing to apply this exact normalization during inference with pretrained model
 ### 1. Top-1 vs Top-5 Accuracy
 In fine-grained visual classification (e.g., ImageNet with 1,000 classes containing 120 different dog breeds), visual ambiguity makes selecting the single correct label exceptionally challenging.
 * **Top-1 Accuracy:** The predicted class with the highest logit ($\arg\max_k \hat{y}_k$) matches the ground truth label exactly:
-  $$\text{Top-1} = \frac{1}{N} \sum_{i=1}^N \mathbb{I}\left( \arg\max_k \hat{y}_{i,k} = y_i \right)$$
+
+    $$\text{Top-1} = \frac{1}{N} \sum_{i=1}^N \mathbb{I}\left( \arg\max_k \hat{y}_{i,k} = y_i \right)$$
+
 * **Top-5 Accuracy:** The ground truth label $y_i$ is contained anywhere within the model's **top 5 highest-probability predictions**:
-  $$\text{Top-5} = \frac{1}{N} \sum_{i=1}^N \mathbb{I}\left( y_i \in \text{Top5}(\hat{\mathbf{y}}_i) \right)$$
+
+    $$\text{Top-5} = \frac{1}{N} \sum_{i=1}^N \mathbb{I}\left( y_i \in \text{Top5}(\hat{\mathbf{y}}_i) \right)$$
 
 ```python
 def compute_topk_accuracy(output: torch.Tensor, target: torch.Tensor, topk=(1, 5)) -> list[float]:

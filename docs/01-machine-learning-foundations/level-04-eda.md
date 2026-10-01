@@ -75,10 +75,10 @@ flowchart TD
 ### Central Tendency: Mean vs. Median vs. Mode
 
 * **Mean ($\mu$):** The arithmetic balance point:
-  
-  $$\mu = \frac{1}{N} \sum_{i=1}^N x_i$$
-  
-  Because every value contributes proportionally, a single extreme number (such as a $\$50,000,000$ outlier in property data) drastically pulls the mean away from the bulk of observations.
+
+    $$\mu = \frac{1}{N} \sum_{i=1}^N x_i$$
+
+    Because every value contributes proportionally, a single extreme number (such as a $\$50,000,000$ outlier in property data) drastically pulls the mean away from the bulk of observations.
 * **Median ($Q_2$):** The physical midpoint when values are sorted. It divides the population into two equal halves. In right-skewed or contaminated distributions, the median provides a significantly more reliable measure of typical values.
 * **Mode:** The value that appears with the highest frequency. This is the only central metric applicable to nominal categorical features.
 
@@ -101,23 +101,25 @@ print("Mode:", stats.mode(values).mode)
 Measuring central tendency alone is incomplete: two groups of students can both have an average exam score of $75$, but in Group A all scores range between $70$ and $80$, while in Group B scores range between $20$ and $100$.
 
 * **Variance ($\sigma^2$):** The average squared distance of each observation from the mean:
-  
-  $$\sigma^2 = \frac{1}{N} \sum_{i=1}^N (x_i - \mu)^2$$
-  
-  Squaring amplifies distant values and converts units into squared terms (e.g., $\text{dollars}^2$), making direct physical interpretation difficult.
+
+    $$\sigma^2 = \frac{1}{N} \sum_{i=1}^N (x_i - \mu)^2$$
+
+    Squaring amplifies distant values and converts units into squared terms (e.g., $\text{dollars}^2$), making direct physical interpretation difficult.
+
 * **Standard Deviation ($\sigma$):** The square root of variance:
-  
-  $$\sigma = \sqrt{\sigma^2}$$
-  
-  This restores spread into the original units of measurement. In a Gaussian distribution, the **Empirical Rule** states:
-  * $\approx 68.2\%$ of observations fall within $\mu \pm 1\sigma$
-  * $\approx 95.4\%$ of observations fall within $\mu \pm 2\sigma$
-  * $\approx 99.7\%$ of observations fall within $\mu \pm 3\sigma$
+
+    $$\sigma = \sqrt{\sigma^2}$$
+
+    This restores spread into the original units of measurement. In a Gaussian distribution, the **Empirical Rule** states:
+    * $\approx 68.2\%$ of observations fall within $\mu \pm 1\sigma$
+    * $\approx 95.4\%$ of observations fall within $\mu \pm 2\sigma$
+    * $\approx 99.7\%$ of observations fall within $\mu \pm 3\sigma$
+
 * **Interquartile Range (IQR):** Spans the middle $50\%$ of observations:
-  
-  $$\text{IQR} = Q_3 - Q_1$$
-  
-  Unlike variance and standard deviation, the IQR is completely unaffected by values at the tails, making it the preferred dispersion metric for skewed or outlier-heavy distributions.
+
+    $$\text{IQR} = Q_3 - Q_1$$
+
+    Unlike variance and standard deviation, the IQR is completely unaffected by values at the tails, making it the preferred dispersion metric for skewed or outlier-heavy distributions.
 
 ---
 
@@ -200,17 +202,18 @@ flowchart LR
 ### Covariance vs. Correlation
 
 * **Covariance ($\text{Cov}(X, Y)$):** Measures the directional joint variability of two variables:
-  
-  $$\text{Cov}(X, Y) = \frac{1}{N} \sum_{i=1}^N (x_i - \mu_x)(y_i - \mu_y)$$
-  
-  If large values of $X$ match large values of $Y$, covariance is positive. However, covariance is unscaled: multiplying property areas by $1,000$ multiplies covariance by $1,000$, making it impossible to determine the true strength of a relationship from covariance alone.
+
+    $$\text{Cov}(X, Y) = \frac{1}{N} \sum_{i=1}^N (x_i - \mu_x)(y_i - \mu_y)$$
+
+    If large values of $X$ match large values of $Y$, covariance is positive. However, covariance is unscaled: multiplying property areas by $1,000$ multiplies covariance by $1,000$, making it impossible to determine the true strength of a relationship from covariance alone.
+
 * **Pearson Correlation Coefficient ($r$):** Normalizes covariance by the product of both standard deviations, bounding values strictly between $-1.0$ and $+1.0$:
-  
-  $$r = \frac{\text{Cov}(X, Y)}{\sigma_x \cdot \sigma_y}$$
-  
-  * $r = +1.0$: Perfect positive linear correlation.
-  * $r = 0.0$: No linear relationship.
-  * $r = -1.0$: Perfect negative linear correlation.
+
+    $$r = \frac{\text{Cov}(X, Y)}{\sigma_x \cdot \sigma_y}$$
+
+    * $r = +1.0$: Perfect positive linear correlation.
+    * $r = 0.0$: No linear relationship.
+    * $r = -1.0$: Perfect negative linear correlation.
 * **Spearman Rank Correlation ($\rho$):** Computes Pearson correlation on the **ranks** of data rather than raw values. It detects monotonic relationships (e.g., $y = e^x$), even when non-linear, and resists outlier distortion.
 
 ```python

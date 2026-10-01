@@ -251,23 +251,24 @@ flowchart LR
 
 1. **Gradient Descent Oscillations:** The loss surface of unscaled features forms a narrow, steep-sided elliptical canyon. Gradients bounce erratically across the walls, requiring thousands of steps to make progress. Scaling rounds the contours into a spherical bowl, enabling gradients to point directly toward the minimum.
 2. **Distance-Based Distortion (KNN, SVM, K-Means):** In Euclidean distance calculations:
-   
-   $$\text{Distance} = \sqrt{(\Delta \text{Salary})^2 + (\Delta \text{Experience})^2}$$
-   
-   A $\$1,000$ salary difference dominates a $10$-year experience difference ($1,000^2 = 1,000,000$ vs $10^2 = 100$). The model becomes effectively blind to experience.
+
+    $$\text{Distance} = \sqrt{(\Delta \text{Salary})^2 + (\Delta \text{Experience})^2}$$
+
+    A $\$1,000$ salary difference dominates a $10$-year experience difference ($1,000^2 = 1,000,000$ vs $10^2 = 100$). The model becomes effectively blind to experience.
 
 *(Note: Tree-based architectures such as Decision Trees and Random Forests are split based on order rather than distance, making them invariant to monotonic scaling.)*
 
 * **Standardization (`StandardScaler`):** Rescales data to have a mean of $\mu = 0$ and unit variance $\sigma = 1$:
-  
-  $$Z = \frac{x - \mu}{\sigma}$$
-  
-  Preferred for most models because it handles moderate outliers without bounding the distribution.
+
+    $$Z = \frac{x - \mu}{\sigma}$$
+
+    Preferred for most models because it handles moderate outliers without bounding the distribution.
+
 * **Normalization (`MinMaxScaler`):** Compresses values into a bounded range $[0, 1]$:
-  
-  $$X_{\text{norm}} = \frac{x - x_{\min}}{x_{\max} - x_{\min}}$$
-  
-  Required when values must remain strictly bounded (such as image pixel intensities $0–255$ scaled to $0.0–1.0$).
+
+    $$X_{\text{norm}} = \frac{x - x_{\min}}{x_{\max} - x_{\min}}$$
+
+    Required when values must remain strictly bounded (such as image pixel intensities $0–255$ scaled to $0.0–1.0$).
 
 ```python
 from sklearn.preprocessing import StandardScaler, MinMaxScaler

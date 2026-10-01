@@ -82,7 +82,7 @@ $$\text{RMSE} = \sqrt{\text{MSE}} = \sqrt{\frac{1}{m} \sum_{i=1}^m (y^{(i)} - \h
 
 ---
 
-### $R^2$ Score (Coefficient of Determination) & Adjusted $R^2$
+### R² Score (Coefficient of Determination) & Adjusted R²
 $R^2$ measures the proportion of variance in the target variable that is explained by the model:
 
 $$R^2 = 1 - \frac{\text{SS}_{\text{res}}}{\text{SS}_{\text{tot}}} = 1 - \frac{\sum (y^{(i)} - \hat{y}^{(i)})^2}{\sum (y^{(i)} - \bar{y})^2}$$
@@ -161,13 +161,14 @@ flowchart LR
 ```
 
 * **F1-Score:** The harmonic mean of precision and recall:
-  
-  $$F_1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}$$
-  
-  Unlike an arithmetic mean, the harmonic mean punishes extreme imbalances: if Precision is $0.99$ but Recall is $0.01$, the arithmetic mean is $0.50$, but the $F_1$-score plummets to $0.02$.
+
+    $$F_1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}$$
+
+    Unlike an arithmetic mean, the harmonic mean punishes extreme imbalances: if Precision is $0.99$ but Recall is $0.01$, the arithmetic mean is $0.50$, but the $F_1$-score plummets to $0.02$.
+
 * **Specificity (True Negative Rate):** Measures the proportion of actual negatives accurately identified:
-  
-  $$\text{Specificity} = \frac{\text{TN}}{\text{TN} + \text{FP}}$$
+
+    $$\text{Specificity} = \frac{\text{TN}}{\text{TN} + \text{FP}}$$
 
 ---
 

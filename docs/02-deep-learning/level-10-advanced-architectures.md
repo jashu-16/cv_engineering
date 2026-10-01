@@ -125,7 +125,9 @@ graph TD
 
 ### ViT Core Components
 1. **Patch Partitioning:** An image $H \times W \times C$ is divided into non-overlapping grid patches of size $P \times P$. The sequence length is:
-   $$N = \frac{H \cdot W}{P^2} \quad \left(\text{For } 224 \times 224 \text{ with } P=16, N = 14 \times 14 = \mathbf{196\text{ Tokens}}\right)$$
+
+    $$N = \frac{H \cdot W}{P^2} \quad \left(\text{For } 224 \times 224 \text{ with } P=16, N = 14 \times 14 = \mathbf{196\text{ Tokens}}\right)$$
+
 2. **Linear Patch Projection:** Implemented with optimal GPU efficiency as a single 2D convolution:
    ```python
    self.patch_embed = nn.Conv2d(in_channels=3, out_channels=768, kernel_size=16, stride=16)

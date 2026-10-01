@@ -95,7 +95,8 @@ $$\mathcal{L}_{\text{VAE}} = \mathcal{L}_{\text{reconstruction}}(\mathbf{x}, \ha
 
 * **Reconstruction Loss:** Ensures high-fidelity image reproduction (MSE or BCE).
 * **Kullback-Leibler (KL) Divergence Penalty:** Forces the encoder's predicted latent distributions to match a standard multivariate Gaussian prior $\mathcal{N}(\mathbf{0}, \mathbf{I})$, ensuring the latent space is continuous, smooth, and easily sampleable:
-  $$\mathcal{L}_{\text{KL}} = -\frac{1}{2} \sum_{j=1}^d \left( 1 + \log(\sigma_j^2) - \mu_j^2 - \sigma_j^2 \right)$$
+
+    $$\mathcal{L}_{\text{KL}} = -\frac{1}{2} \sum_{j=1}^d \left( 1 + \log(\sigma_j^2) - \mu_j^2 - \sigma_j^2 \right)$$
 
 ---
 
