@@ -3,7 +3,11 @@ window.MathJax = {
     inlineMath: [["\\(", "\\)"]],
     displayMath: [["\\[", "\\]"]],
     processEscapes: true,
-    processEnvironments: true
+    processEnvironments: true,
+    packages: {'[+]': ['ams', 'boldsymbol', 'mathtools', 'color', 'physics', 'textmacros']}
+  },
+  loader: {
+    load: ['[tex]/ams', '[tex]/boldsymbol', '[tex]/mathtools', '[tex]/color', '[tex]/physics']
   },
   options: {
     ignoreHtmlClass: ".*|",
